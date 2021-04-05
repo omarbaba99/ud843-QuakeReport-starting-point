@@ -30,7 +30,7 @@ public class DataApdapter extends ArrayAdapter<Data>
 		date.setText(currentData.getDate());
 	
 		TextView felt = (TextView) listItemView.findViewById(R.id.felt);
-		felt.setText(""+currentData.getFelt());
+		felt.setText(currentData.getFelt());
 	
 		return listItemView;
 		}

@@ -16,13 +16,13 @@
 package com.example.android.quakereport;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class EarthquakeActivity extends AppCompatActivity {
+public class EarthquakeActivity extends Activity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
 
@@ -32,15 +32,7 @@ public class EarthquakeActivity extends AppCompatActivity {
         setContentView(R.layout.earthquake_activity);
 
         // Create a fake list of earthquake locations.
-        ArrayList<Data> earthquakes = new ArrayList<Data>();
-        earthquakes.add(new Data(1.2,"Kano Sate","1 April, 2021"));
-        earthquakes.add(new Data(2.3,"Kaduna State","2 May, 2022"));
-        earthquakes.add(new Data(3.4,"Sokoto State","3 june, 2023"));
-        earthquakes.add(new Data(4.5,"Katsina State","4 july, 2024"));
-		earthquakes.add(new Data(5.6,"Gombe Sate","1 April, 2025"));
-        earthquakes.add(new Data(2.3,"Jigawa State","2 May, 2022"));
-        earthquakes.add(new Data(3.4,"Sokoto State","8 june, 2023"));
-        earthquakes.add(new Data(4.5,"Kebbi State","4 july, 2024"));
+        ArrayList<Data> earthquakes = QueryUtils.extractEarthquakes();
 
 		
 

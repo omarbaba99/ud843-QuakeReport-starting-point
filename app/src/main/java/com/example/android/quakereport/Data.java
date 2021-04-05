@@ -3,11 +3,11 @@ package com.example.android.quakereport;
 public class Data
 { 
 	private String mCityName;
-	private double mFelt;
+	private String mMag;
 	private String mDate;
 	
-	public Data(double felt,String city,String date) {
-		mFelt = felt;
+	public Data(String mag, String city, String date) {
+		mMag = mag;
 		mCityName = city;
 		mDate = date;
 		
@@ -15,8 +15,8 @@ public class Data
 	public String getCityName() {
 		return mCityName;
 	}
-	public double getFelt(){
-		return mFelt; 
+	public String getFelt(){
+		return mMag;
 	}
 	public String getDate(){
 		return mDate;
