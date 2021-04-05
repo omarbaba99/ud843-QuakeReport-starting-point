@@ -4,12 +4,12 @@ public class Data
 { 
 	private String mCityName;
 	private String mMag;
-	private String mDate;
+	private long mDateinMls;
 	
-	public Data(String mag, String city, String date) {
+	public Data(String mag, String city, long date) {
 		mMag = mag;
 		mCityName = city;
-		mDate = date;
+		mDateinMls = date;
 		
 	}
 	public String getCityName() {
@@ -18,8 +18,8 @@ public class Data
 	public String getFelt(){
 		return mMag;
 	}
-	public String getDate(){
-		return mDate;
+	public long getDate(){
+		return mDateinMls;
 	}
 } 
 
