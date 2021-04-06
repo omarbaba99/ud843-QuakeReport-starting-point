@@ -1,25 +1,30 @@
 package com.example.android.quakereport;
 
 public class Data
-{ 
+{
 	private String mCityName;
-	private String mMag;
+	private double mMag;
 	private long mDateinMls;
-	
-	public Data(String mag, String city, long date) {
+	private String GS_URL;
+
+	public Data(double mag, String city, long date,String url) {
 		mMag = mag;
 		mCityName = city;
 		mDateinMls = date;
-		
+		GS_URL = url;
+
 	}
 	public String getCityName() {
 		return mCityName;
 	}
-	public String getFelt(){
+	public double getMagnitude(){
 		return mMag;
 	}
 	public long getDate(){
 		return mDateinMls;
 	}
-} 
+	public String getUrl(){
+		return GS_URL;
+	}
+}
 
