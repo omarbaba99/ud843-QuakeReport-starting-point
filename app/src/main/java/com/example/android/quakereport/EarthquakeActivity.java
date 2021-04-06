@@ -16,13 +16,21 @@
 package com.example.android.quakereport;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.content.UriPermission;
+import android.content.UriMatcher;
+import android.app.Activity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import java.util.ArrayList;
+import android.content.Intent;
+import java.net.*;
+import java.net.URI;
+import android.net.*;
 
-public class EarthquakeActivity extends AppCompatActivity {
+public class EarthquakeActivity extends Activity {
 
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
 
@@ -32,17 +40,10 @@ public class EarthquakeActivity extends AppCompatActivity {
         setContentView(R.layout.earthquake_activity);
 
         // Create a fake list of earthquake locations.
-        ArrayList<Data> earthquakes = new ArrayList<Data>();
-        earthquakes.add(new Data(1.2,"Kano Sate","1 April, 2021"));
-        earthquakes.add(new Data(2.3,"Kaduna State","2 May, 2022"));
-        earthquakes.add(new Data(3.4,"Sokoto State","3 june, 2023"));
-        earthquakes.add(new Data(4.5,"Katsina State","4 july, 2024"));
-		earthquakes.add(new Data(5.6,"Gombe Sate","1 April, 2025"));
-        earthquakes.add(new Data(2.3,"Jigawa State","2 May, 2022"));
-        earthquakes.add(new Data(3.4,"Sokoto State","8 june, 2023"));
-        earthquakes.add(new Data(4.5,"Kebbi State","4 july, 2024"));
+        final ArrayList<Data> earthquakes = QueryUtils.extractEarthquakes();
 
-		
+
+
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
@@ -53,5 +54,13 @@ public class EarthquakeActivity extends AppCompatActivity {
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(adapter);
-    }
-}
+
+        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Data item = earthquakes.get(i);
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getUrl()));
+                startActivity(webIntent);
+            }
+        });
+    }}
